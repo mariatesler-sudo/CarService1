@@ -21,13 +21,11 @@ public class CarService {
                 .filter(car -> "NEW".equals(car.getCondition()))
                 .toList();
     }
-
     public long countCarsOwners(List<Car> cars) {
         return cars.stream()
                 .filter(car -> car.getOwners().size() > 2)
                 .count();
     }
-
     public List<Car> incrementCarAge(List<Car> cars) {
         cars.forEach(car -> car.setAge(car.getAge() + 1));
         return cars;
@@ -78,13 +76,12 @@ public class CarService {
                 .allMatch(car -> car.getAge() > 10);
     }
 
-    public Boolean checkCarOwnerName(List<Car> cars) {
+    public Boolean checkCarOwnerName(List<Car> cars){
         return cars.stream()
                 .filter(car -> "USED".equals(car.getCondition()))
                 .flatMap(car -> car.getOwners().stream())
                 .anyMatch(owner -> "Adam".equals(owner.getName()));
     }
-
     public Owner getAnyOwner(List<Car> cars) {
         return cars.stream()
                 .flatMap(car -> car.getOwners().stream())
